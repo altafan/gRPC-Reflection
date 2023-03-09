@@ -1,0 +1,10 @@
+= gRPC reflection client
+
+Run
+```
+yarn
+./script
+tsc api-spec/protobuf/gen/reflection.ts
+
+open index.html
+```
