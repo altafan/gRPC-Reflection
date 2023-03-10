@@ -2,13 +2,22 @@
   "name": "grpc-client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build:ts": "tsc -p tsconfig.json --outDir ./dist",
     "build:proto": "buf generate buf.build/tdex-network/reflection"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nice-grpc-web": "^3.1.0"
+    "nice-grpc": "^2.1.1",
+    "nice-grpc-web": "^3.1.0",
+    "ws": "^8.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.0",
+    "rxjs": "^7.8.0",
+    "ts-proto": "^1.141.0",
+    "typescript": "^4.9.5"
   }
 }
