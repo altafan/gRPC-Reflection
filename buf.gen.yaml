@@ -1,11 +1,12 @@
 version: v1
 plugins:
-  - remote: buf.build/timostamm/plugins/protobuf-ts
-    out: api-spec/protobuf/gen/js
+  - name: ts
+    out: src/generated
     opt:
-      - add_pb_suffix
-      - eslint_disable
-      - ts_nocheck
-      - keep_enum_prefix
-      - long_type_number
-      - output_javascript
+      - outputServices=generic-definitions
+      - outputServices=nice-grpc
+      - outputJsonMethods=false
+      - useExactTypes=false
+      - esModuleInterop=true
+    strategy: all
+    path: ./node_modules/ts-proto/protoc-gen-ts_proto
