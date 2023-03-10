@@ -4,7 +4,7 @@ import {
   GetInfoRequest,
   DeepPartial,
 } from "./generated/reflection/v1/service";
-import { createChannel, createClient } from "nice-grpc";
+import { createChannel, createClient } from "nice-grpc-web";
 
 const channel = createChannel("http://localhost:9000");
 
@@ -17,13 +17,23 @@ async function* requestStream(
   numberOfRequests: number
 ): AsyncIterable<DeepPartial<GetInfoRequest>> {
   for (let i = 0; i < numberOfRequests; i++) {
-    yield { host: "localhost:9000" };
+    yield {
+      host: "",
+      fileByFilename: "",
+      fileContainingSymbol: "",
+      fileContainingExtension: {
+        containingType: "",
+        extensionNumber: 0
+      },
+      allExtensionNumbersOfType: "",
+      listServices: ""
+    };
   }
 }
 
 async function main() {
-  for await (const response of client.getInfo(requestStream(3))) {
-    console.log(response);
+  for await (const response of client.getInfo(requestStream(1))) {
+    console.log(response.listServicesResponse);
   }
 }
 
