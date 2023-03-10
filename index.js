@@ -1,14 +1,15 @@
-import {createChannel, createClient} from 'nice-grpc-web';
-import {ServerReflectionClient} from './api-spec/protobuf/gen/reflection';
+const { ReflectionServiceClient } = require('./api-spec/protobuf/gen/js/reflection/v1');
+const { createChannel, createClient } = require('nice-grpc-web');
 
-const channel = createChannel('http://localhost:8080');
+
+const channel = createChannel('http://localhost:9000')
 
 const client = createClient(
-  ServerReflectionClient,
+  ReflectionServiceClient,
   channel,
 );
 
-client.listServices().then((response) => {
+client.getInfo().then((response) => {
   console.log(response);
 })
 

@@ -3,8 +3,7 @@
 Run
 ```
 yarn
-./script
-tsc api-spec/protobuf/gen/reflection.ts
+yarn build:proto
 
 open index.html
 ```
